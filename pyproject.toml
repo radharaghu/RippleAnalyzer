@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ripple-analyzer"
+version = "0.2.0"
+description = "Sharp-wave ripple detection and interactive inspection for hippocampal LFP recordings"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+keywords = ["neuroscience", "electrophysiology", "hippocampus", "sharp-wave ripples", "LFP", "NWB"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = [
+    "numpy>=1.21",
+    "scipy>=1.7",
+    "pandas>=1.3",
+    "matplotlib>=3.5",
+    "PyQt5>=5.15",
+]
+
+[project.optional-dependencies]
+nwb = ["pynwb>=2.0"]
+dev = ["pytest>=7", "pyflakes>=3"]
+
+[project.scripts]
+ripple-analyzer = "ripple_analyzer.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["ripple_analyzer*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
